@@ -1,0 +1,89 @@
+.img-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.img-group img {
+  max-width: 100%;
+  height: auto;
+}
+
+.start-shopping {
+  padding: 4rem 7rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.start-shopping img {
+  max-width: 100%;
+  border-radius: 2rem;
+
+}
+
+.shopping-info {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.shopping-info button {
+  padding: 1rem 3rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  background-color: black;
+  color: white;
+  transition: background-color 0.5s ease;
+  transition: color 1s ease;
+  border: none;
+  position: relative;
+  transition: all 0.2s linear 0s;
+  
+}
+
+
+  .shopping-info button::before {
+    content: "\f178"; /* Unicode for the FontAwesome arrow or use any icon */
+    font-family: "FontAwesome";
+    font-size: 15px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 1.5rem;
+    top: 0;
+    opacity: 0;
+    height: 100%;
+    width: 40px;
+    transition: all 0.2s linear 0s;
+    position: absolute;
+  }
+
+  p{
+    margin:0;
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+  }
+
+  .shopping-info button span {
+    display: inline-block;
+    transition: transform 0.2s linear;
+  }
+  .shopping-info button:hover span {
+    transform: translateX(-20px);
+  }
+
+
+  
+  .shopping-info button:hover::before {
+    opacity: 1;
+    
+  }

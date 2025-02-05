@@ -5,6 +5,9 @@
   box-sizing: border-box;
 }
 
+.slideshow-container * {
+    box-sizing: border-box;
+  }
 .carousel-btn {
   background-color: transparent;
   border: none;
@@ -41,7 +44,7 @@
   transition: background-color 0.7s ease;
 }
 
-.dot:hover {
+.dot:hover,.active {
   background-color: #717171;
 }
 

@@ -38,3 +38,5 @@ const useData = (url) => {
 
     return {data, loading, error};
 }
+
+export default useData;

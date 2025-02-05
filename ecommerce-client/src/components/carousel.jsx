@@ -97,14 +97,14 @@ function Carousel() {
         </button>
 
         <div style={{ textAlign: "center" }}>
-          <span className="dot" onClick={() => currSlide(0)}>
+          <span className={slideIndex === 0 ? "dot active": "dot"} onClick={() => currSlide(0)}>
             {" "}
           </span>
-          <span className="dot" onClick={() => currSlide(1)}>
+          <span className={slideIndex === 1 ? "dot active": "dot"} onClick={() => currSlide(1)}>
             {" "}
           </span>
-          <span className="dot" onClick={() => currSlide(2)}></span>
-          <span className="dot" onClick={() => currSlide(3)}></span>
+          <span className={slideIndex === 2 ? "dot active": "dot"} onClick={() => currSlide(2)}></span>
+          <span className={slideIndex === 3 ? "dot active": "dot"} onClick={() => currSlide(3)}></span>
         </div>
       </div>
     </>
