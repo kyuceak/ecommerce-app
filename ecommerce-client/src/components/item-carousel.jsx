@@ -58,6 +58,7 @@ function ItemCarousel() {
           640: { slidesPerView: 1 },
           768: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
+          2048: { slidesPerView: 5 },
         }}
         observer={true}
         observeParents={true}
