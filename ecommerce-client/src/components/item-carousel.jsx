@@ -5,6 +5,7 @@ import { Navigation } from "swiper/modules";
 import "../styles/item-carousel.css";
 import { useEffect, useState, useRef } from "react";
 import useData from "../hooks/useData";
+import StarRating from "./star-rating";
 
 import nextSvg from "../assets/nextArrow.svg";
 import prevSvg from "../assets/prevArrow.svg";
@@ -76,10 +77,9 @@ function ItemCarousel() {
                 />
                 <div className="card-content">
                   <h3 className="card-title">{product.title}</h3>
+                  <StarRating rating={product.rating.rate} />
                   <p className="card-price">{product.price}</p>
-                  {/* {product.oldPrice && (
-                  <p className="card-old-price">{product.oldPrice}</p>
-                )} */}
+                  <button id="add-btn">Add to cart +</button>
                 </div>
               </div>
             </SwiperSlide>
