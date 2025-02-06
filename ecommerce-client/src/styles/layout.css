@@ -4,7 +4,7 @@ body {
 }
 
 body {
-  font-family: Helvetica,sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
 .layout {
@@ -33,32 +33,30 @@ body {
 }
 
 .sidebar {
-  box-sizing: border-box;
   width: 260px;
   background-color: rgb(0, 0, 0);
-  height: 80vh;
+  max-height: 85vh;
   position: sticky;
   top: 5rem;
   margin-left: 1rem;
   border-radius: 2rem;
 
- 
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
-.nav{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
 }
 
-.sidebar img{
-    width: auto;
-   height: 200px;
+.sidebar img {
+  width: auto;
+  height: 200px;
 }
 
 .sidebar ul {
@@ -91,6 +89,33 @@ body {
 .custom-link {
   color: white;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.1rem 2rem;
+}
+
+.icon-sidebar {
+  background-color: rgb(63, 62, 62);
+  border-radius: 0.4rem;
+  padding: 0.7rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.icon-sidebar path {
+  fill: white;
+  transition: fill 0.2s ease-in-out;
+  opacity: 1;
+}
+
+/* Change the icon when the parent link is hovered */
+.custom-link:hover .icon-sidebar {
+  background-color: white;
+}
+
+.custom-link:hover .icon-sidebar path {
+  fill: black;
 }
 
 .header {
@@ -100,6 +125,10 @@ body {
   align-items: center;
   flex-shrink: 0;
   width: 100%;
+}
+
+.search-icon{
+  cursor: pointer;
 }
 
 .header h2 {

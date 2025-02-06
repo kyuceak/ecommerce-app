@@ -1,16 +1,12 @@
-import "../styles/header.css"
+import "../styles/header.css";
+import SearchBar from "./search-bar";
 
-
-function Header(){
-
-
-
-    return (
-        <div className="header">
-            <h2>I am good</h2>
-        </div>
-    );
+function Header() {
+  return (
+    <div className="header">
+      <SearchBar />
+    </div>
+  );
 }
-
 
 export default Header;
