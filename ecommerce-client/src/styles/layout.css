@@ -36,12 +36,13 @@ body {
   box-sizing: border-box;
   width: 260px;
   background-color: rgb(0, 0, 0);
-  height: 100vh;
+  height: 80vh;
   position: sticky;
-  top: 0rem;
-  /* border-top-right-radius: 1.5rem; */
-  /* border-bottom-right-radius: 1.5rem; */
-  
+  top: 5rem;
+  margin-left: 1rem;
+  border-radius: 2rem;
+
+  padding-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +51,7 @@ body {
 
 
 .sidebar ul {
-  margin-top: 3rem;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,7 +62,7 @@ body {
 .sidebar ul li {
   list-style: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   cursor: pointer;
 }
 .custom-link{
