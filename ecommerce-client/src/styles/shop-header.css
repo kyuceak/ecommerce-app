@@ -1,0 +1,30 @@
+.shop-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(245, 244, 243,0.6);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgb(180, 180, 180);
+  padding-left: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+}
+
+.view {
+  display: flex;
+  gap: 1rem;
+}
+
+.view button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    
+}
+
+button img:hover{
+    color: aqua;
+}
+
+.sort-select{
+    width: 250px;
+}
