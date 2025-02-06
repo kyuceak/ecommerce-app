@@ -1,12 +1,8 @@
 import "../styles/product-grid-view.css";
 import useData from "../hooks/useData";
 
-function ProductGridView() {
-  const {
-    data: products,
-    loading,
-    error,
-  } = useData("https://fakestoreapi.com/products?limit=30");
+function ProductGridView({products}) {
+
 
   return (
     <>

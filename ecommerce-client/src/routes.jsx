@@ -15,6 +15,7 @@ const routes = [
     children: [
       { path: "home", element: <MainPage /> },
       { path: "shop", element: <Shop /> },
+      { path: "category/:category", element: <Shop /> },
     ],
   },
 ];

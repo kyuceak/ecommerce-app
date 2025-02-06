@@ -4,10 +4,22 @@ import adCap from "../assets/adCap.webp";
 import adInsta from "../assets/adInsta.webp";
 import adShirt from "../assets/adShirt.webp";
 import start_shop from "../assets/shop-banner.jpg";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/main-page.css";
 
+
+
+
 function MainPage() {
+
+
+  const navigate = useNavigate();
+
+
+  const navigateShop = () => {
+    navigate("/shop", { replace: true });
+  }
   return (
     <>
       <Carousel />
@@ -33,8 +45,8 @@ function MainPage() {
             Embrace the allure of autumn with refined styles that capture the
             season's essence—shop now and indulge in fashion redefined.
           </p>
-          <button>
-            <span>Elevate Your Style</span>
+          <button onClick={navigateShop}>
+            <span >Elevate Your Style</span>
           </button>
         </div>
       </div>
