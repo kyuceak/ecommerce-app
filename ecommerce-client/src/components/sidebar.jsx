@@ -30,7 +30,7 @@ function Sidebar() {
         </div>
 
         <div className="categories-section">
-          <h1>Categories</h1>
+          <h2 id="cat-header">Categories</h2>
 
           <ul className="accordion-content">
             <li>

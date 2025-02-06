@@ -47,6 +47,10 @@ body {
   align-items: center;
 }
 
+#cat-header{
+  margin-left: 0.5rem;
+}
+
 .nav {
   display: flex;
   flex-direction: column;
