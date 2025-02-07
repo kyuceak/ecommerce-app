@@ -12,9 +12,12 @@
 .view {
   display: flex;
   gap: 1rem;
+  justify-content: center;
+  align-content: center;
 }
 
 .view button{
+  flex:1;
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -28,3 +31,21 @@ button img:hover{
 .sort-select{
     width: 250px;
 }
+
+.view-active{
+  /* border: 2px solid black; */
+  background-color: rgb(215, 212, 212);
+  
+}
+
+#list-btn, #grid-btn{
+  padding: 1rem;
+  
+}
+
+
+
+.view button{
+  fill: blue;
+}
+

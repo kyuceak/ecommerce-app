@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../styles/product-grid-view.css";
 
 import StarRating from "./star-rating";
-function ProductGridView({ products,card ,setCard }) {
+function ProductGridView({ products,card ,setCard, viewMode }) {
 
   const [addedProducts, setAddedProducts] = useState([]);
 
@@ -17,7 +17,7 @@ function ProductGridView({ products,card ,setCard }) {
 
   return (
     <>
-      <div className="product-grid">
+      <div className={`product-grid ${viewMode === "list" ? "list-view" : "grid-view"}`}>
         {products &&
           products.map((product) => {
 

@@ -7,3 +7,32 @@
   padding: 4rem;
 }
 
+.product-grid.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+
+.product-grid.list-view .card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  padding-right: 0;
+  gap: 1rem;
+}
+
+.product-grid.list-view .card .card-image {
+  width: 50%;
+}
+
+.product-grid.list-view .card .card-content {
+  
+  justify-content: center;
+
+  width: 50%;
+}
+
+

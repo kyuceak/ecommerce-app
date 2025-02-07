@@ -1,13 +1,12 @@
-import { useState,useEffect } from "react";
-import(useLocation)
+import { useState, useEffect } from "react";
+import(useLocation);
 import "../styles/shop-header.css";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-import listSvg from "../assets/list-icon.svg"
-import gridSvg from "../assets/grid-icon.svg"
+import listSvg from "../assets/list-icon.svg";
+import gridSvg from "../assets/grid-icon.svg";
 import { useLocation } from "react-router-dom";
 
-
-function ShopHeader({products,onSortChange}) {
+function ShopHeader({ products, onSortChange, viewMode, setViewMode }) {
   const [value, setValue] = useState("");
 
   const location = useLocation();
@@ -18,48 +17,53 @@ function ShopHeader({products,onSortChange}) {
   }, [location.pathname]);
 
   const handleChange = (event) => {
-
-    const sortType = (event.target.value);
+    const sortType = event.target.value;
     setValue(sortType);
-
 
     let sortedProducts = [...products];
 
-    switch(sortType) {
+    switch (sortType) {
       case "lowestPrice":
-        sortedProducts.sort((a,b) => a.price - b.price);
+        sortedProducts.sort((a, b) => a.price - b.price);
         break;
       case "highestPrice":
-        sortedProducts.sort((a,b) => b.price - a.price);
+        sortedProducts.sort((a, b) => b.price - a.price);
         break;
       case "highestRating":
-        sortedProducts.sort((a,b) => b.rating.rate - a.rating.rate);
+        sortedProducts.sort((a, b) => b.rating.rate - a.rating.rate);
         break;
       case "mostRated":
-        sortedProducts.sort((a,b) => b.rating.count - a.rating.count);
+        sortedProducts.sort((a, b) => b.rating.count - a.rating.count);
         break;
       default:
         break;
     }
 
-      
-  if(onSortChange){
-    onSortChange(sortedProducts)
-  }
-
+    if (onSortChange) {
+      onSortChange(sortedProducts);
+    }
   };
-
-
-
-
-
 
   return (
     <>
       <div className="shop-header">
         <div className="view">
-          <button><img src={listSvg} alt="" /></button>
-          <button><img src={gridSvg} alt="" /></button>
+          <button onClick={() => setViewMode("list")}>
+            <img
+              src={listSvg}
+              id="list-btn"
+              className={viewMode === "list" ? "view-active" : ""}
+              alt=""
+            />
+          </button>
+          <button onClick={() => setViewMode("grid")}>
+            <img
+              src={gridSvg}
+              id="grid-btn"
+              className={viewMode === "grid" ? "view-active" : ""}
+              alt=""
+            />
+          </button>
         </div>
         <div className="product-sort">
           <FormControl variant="outlined" className="sort-select">

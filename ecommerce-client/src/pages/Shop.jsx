@@ -2,6 +2,7 @@ import ProductGridView from "../components/productGridView";
 import ShopHeader from "../components/shop-header";
 import useData from "../hooks/useData";
 import { useOutletContext, useParams } from "react-router-dom";
+import { useState } from "react";
 
 function Shop() {
 
@@ -31,12 +32,14 @@ function Shop() {
     setData(sortedProducts);
   };
 
+  const [viewMode, setViewMode] = useState("grid");
+
   
 
   return (
     <>
-      <ShopHeader products={products} onSortChange={handleSortChange} />
-      <ProductGridView products={products} card={card} setCard={setCard}/>
+      <ShopHeader products={products} onSortChange={handleSortChange} viewMode={viewMode} setViewMode={setViewMode}/>
+      <ProductGridView products={products} card={card} setCard={setCard} viewMode={viewMode}/>
     </>
   );
 }

@@ -38,7 +38,7 @@ function Sidebar() {
                 <Devices className="icon-sidebar" /> Electronics
               </Link>
             </li>
-            <li>
+            <li> 
               <Link to="category/jewelry" className="custom-link">
                 <Jewelry className="icon-sidebar" /> Jewelry
               </Link>
