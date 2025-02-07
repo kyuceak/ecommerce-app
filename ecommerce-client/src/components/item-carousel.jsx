@@ -10,7 +10,7 @@ import StarRating from "./star-rating";
 import nextSvg from "../assets/nextArrow.svg";
 import prevSvg from "../assets/prevArrow.svg";
 
-function ItemCarousel() {
+function ItemCarousel({ card, setCard }) {
   const {
     data: products,
     loading,
@@ -21,6 +21,10 @@ function ItemCarousel() {
   const nextRef = useRef(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+
+  const addToCard = (product) => {
+    setCard((prev) => [...prev, product]);
+  };
 
   return (
     <div className="carousel-wrapper">
@@ -67,23 +71,43 @@ function ItemCarousel() {
         className="carousel-container"
       >
         {products &&
-          products.map((product, index) => (
-            <SwiperSlide key={index}>
-              <div className="card">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="card-image"
-                />
-                <div className="card-content">
-                  <h3 className="card-title">{product.title}</h3>
-                  <StarRating rating={product.rating.rate} />
-                  <p className="card-price">{product.price}</p>
-                  <button id="add-btn">Add to cart +</button>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
+          products.map((product, index) => {
+            const isAdded = card.some((item) => item.id === product.id);
+
+            return (
+              <>
+                <SwiperSlide key={index}>
+                  <div className="card">
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      className="card-image"
+                    />
+                    <div className="card-content">
+                      <h3 className="card-title">{product.title}</h3>
+                      <StarRating rating={product.rating.rate} />
+                      <p className="card-price">{product.price}</p>
+                      <button
+                        id="add-btn"
+                        className={isAdded ? "added" : ""}
+                        onClick={() => addToCard(product)}
+                        disabled={isAdded}
+                      >
+                        {isAdded ? (
+                          <>
+                            {" "}
+                            Added <i className="fa fa-check"></i>
+                          </>
+                        ) : (
+                          "Add to cart +"
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              </>
+            );
+          })}
       </Swiper>
     </div>
   );

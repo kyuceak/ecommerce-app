@@ -92,6 +92,10 @@
   font-weight: bold;
 }
 
+#add-btn.added{
+  color: green;
+}
+
 
 
 .custom-nav {

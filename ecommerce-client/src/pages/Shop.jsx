@@ -1,9 +1,12 @@
 import ProductGridView from "../components/productGridView";
 import ShopHeader from "../components/shop-header";
 import useData from "../hooks/useData";
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 
 function Shop() {
+
+
+  const {card,setCard} = useOutletContext();
 
   let {category} = useParams();
 
@@ -25,7 +28,7 @@ function Shop() {
   return (
     <>
       <ShopHeader />
-      <ProductGridView products={products} />
+      <ProductGridView products={products} card={card} setCard={setCard}/>
     </>
   );
 }

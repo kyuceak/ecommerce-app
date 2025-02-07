@@ -4,7 +4,7 @@ import adCap from "../assets/adCap.webp";
 import adInsta from "../assets/adInsta.webp";
 import adShirt from "../assets/adShirt.webp";
 import start_shop from "../assets/shop-banner.jpg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 import "../styles/main-page.css";
 
@@ -13,7 +13,7 @@ import "../styles/main-page.css";
 
 function MainPage() {
 
-
+  const {card,setCard} = useOutletContext();
   const navigate = useNavigate();
 
 
@@ -24,7 +24,7 @@ function MainPage() {
     <>
       <Carousel />
 
-      <ItemCarousel />
+      <ItemCarousel card={card} setCard={setCard}/>
 
       <div className="img-group">
         <img src={adCap} alt="" />
