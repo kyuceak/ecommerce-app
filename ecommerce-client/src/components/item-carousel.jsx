@@ -86,7 +86,7 @@ function ItemCarousel({ card, setCard }) {
                     <div className="card-content">
                       <h3 className="card-title">{product.title}</h3>
                       <StarRating rating={product.rating.rate} />
-                      <p className="card-price">{product.price}</p>
+                      <p className="card-price">${product.price}</p>
                       <button
                         id="add-btn"
                         className={isAdded ? "added" : ""}

@@ -23,11 +23,19 @@ function Shop() {
     data: products,
     loading,
     error,
+    setData,
   } = useData(apiUrl);
+
+
+  const handleSortChange = (sortedProducts) => {
+    setData(sortedProducts);
+  };
+
+  
 
   return (
     <>
-      <ShopHeader />
+      <ShopHeader products={products} onSortChange={handleSortChange} />
       <ProductGridView products={products} card={card} setCard={setCard}/>
     </>
   );

@@ -50,7 +50,7 @@
 
 
   .shopping-info button::before {
-    content: "\f178"; /* Unicode for the FontAwesome arrow or use any icon */
+    content: "\f178"; /* Unicode for the FontAwesome*/
     font-family: "FontAwesome";
     font-size: 15px;
     position: absolute;

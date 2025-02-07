@@ -66,6 +66,7 @@
   font-size: 1.3rem;
   font-weight: bold;
   margin-bottom: 8px;
+  
   display: -webkit-box;           /* Creates a flexible box (required for line clamping) */
   -webkit-box-orient: vertical;   /* Specifies the box orientation */
   -webkit-line-clamp: 2;          /* Limits the text to 2 lines */
@@ -93,7 +94,7 @@
 }
 
 #add-btn.added{
-  color: green;
+  color: rgb(8, 181, 46);
 }
 
 
