@@ -11,11 +11,7 @@ function ProductHeader({ product }) {
 
   return (
     <div className="product-header">
-      <span
-        className="breadcrumb-item"
-        onClick={() => navigate("/home")}
-        style={{ cursor: "pointer" }}
-      >
+      <span onClick={() => navigate("/home")} style={{ cursor: "pointer" }}>
         Home
       </span>
       <span>
@@ -25,7 +21,6 @@ function ProductHeader({ product }) {
         ></i>
       </span>
       <span
-        className="breadcrumb-item"
         onClick={() => navigate(`/category/${product.category}`)}
         style={{ cursor: "pointer" }}
       >
@@ -37,13 +32,7 @@ function ProductHeader({ product }) {
           style={{ color: "#74C0FC" }}
         ></i>
       </span>
-      <span
-        className="breadcrumb-item"
-     
-      
-      >
-        {capitalize(product.title)}
-      </span>
+      <span>{capitalize(product.title)}</span>
     </div>
   );
 }

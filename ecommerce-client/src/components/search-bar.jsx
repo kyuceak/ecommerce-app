@@ -5,6 +5,7 @@ import useData from "../hooks/useData.jsx";
 import { useState, useEffect, useRef } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import "../styles/search-bar.css";
+import { useNavigate } from "react-router-dom";
 
 function SearchBar() {
   const { data: products, loading, error } = useData("https://fakestoreapi.com/products");
@@ -13,6 +14,7 @@ function SearchBar() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [open, setOpen] = useState(false);
   const containerRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!loading && products) {
@@ -46,6 +48,10 @@ function SearchBar() {
     }
 
   },[]);
+
+  const handleNavigation = (product) => {
+    navigate(`/shop/${product.id}`,{ state: {product}});
+  }
 
   return (
     <>
@@ -88,6 +94,7 @@ function SearchBar() {
                 key={product.id}
                 className="search-item"
                 onClick={() => {
+                    handleNavigation(product)
                     setSearchTerm(product.title)
                     setOpen(false)
                     

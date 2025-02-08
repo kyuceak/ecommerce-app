@@ -1,7 +1,7 @@
 import ProductHeader from "../components/product-header";
 import ProductDetails from "../components/products-details";
 import { useLocation } from "react-router-dom";
-
+import { useOutletContext } from "react-router-dom";
 
 function ProductDetail(){
 
@@ -11,10 +11,12 @@ function ProductDetail(){
     const product = state?.product;
 
 
+    const { card, setCard } = useOutletContext();
+
 
     return <>
     <ProductHeader product={product} />
-    <ProductDetails product={product} />
+    <ProductDetails product={product} card={card} setCard={setCard} />
     </>
 }
 

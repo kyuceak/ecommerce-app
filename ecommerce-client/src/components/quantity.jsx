@@ -38,7 +38,7 @@ function Quantity({ items, setCard, index }) {
 
   return (
     <div className="item-count">
-      <button onClick={handleMinus}>
+      <button onClick={handleMinus} className="minus-btn">
         <i className="fas fa-minus"></i>
       </button>
       <input
@@ -46,7 +46,7 @@ function Quantity({ items, setCard, index }) {
         value={quantity}
         onChange={handleInputChange}
       />
-      <button onClick={handlePlus}>
+      <button onClick={handlePlus} className="pls-btn">
         <i className="fas fa-plus"></i>
       </button>
     </div>
