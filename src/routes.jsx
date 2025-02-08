@@ -1,4 +1,4 @@
-import Shop from "./pages/Shop";
+import Shop from "./pages/shop";
 import Home from "./pages/home";
 import MainPage from "./components/main-page";
 import { Navigate } from "react-router-dom";
