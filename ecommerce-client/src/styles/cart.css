@@ -4,10 +4,10 @@
     top: 0;
     left: 0;
     height: 100vh;
-    width: 100vw;
+    width: 96vw;
     background-color: rgba(0, 0, 0, 0.5); 
     color: rgb(255, 255, 255);
-    z-index: 999;
+    z-index: 1002;
     display: flex;
     justify-content: flex-end; 
    
@@ -148,7 +148,7 @@
   .cart-item-info p {
     margin: 0;
     font-size: 1.1rem;
-    color: #555;
+    color: #b4b4b4;
     text-align: end;
     display: -webkit-box;           /* Creates a flexible box (required for line clamping) */
     -webkit-box-orient: vertical;   /* Specifies the box orientation */

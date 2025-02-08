@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import(useLocation);
 import "../styles/shop-header.css";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import listSvg from "../assets/list-icon.svg";

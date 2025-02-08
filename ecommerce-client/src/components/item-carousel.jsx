@@ -86,7 +86,7 @@ function ItemCarousel({ card, setCard }) {
             const isAdded = card.some((item) => item.id === product.id);
 
             return (
-              <>
+           
                 <SwiperSlide key={index}>
                   <div className="card">
                     <img
@@ -117,7 +117,7 @@ function ItemCarousel({ card, setCard }) {
                     </div>
                   </div>
                 </SwiperSlide>
-              </>
+            
             );
           })}
       </Swiper>

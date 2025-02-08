@@ -5,7 +5,7 @@ import useData from "../hooks/useData.jsx";
 import { useState, useEffect, useRef } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import "../styles/search-bar.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function SearchBar() {
   const { data: products, loading, error } = useData("https://fakestoreapi.com/products");
@@ -15,6 +15,11 @@ function SearchBar() {
   const [open, setOpen] = useState(false);
   const containerRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    setSearchTerm("");
+  },[location.pathname])
 
   useEffect(() => {
     if (!loading && products) {
@@ -40,14 +45,32 @@ function SearchBar() {
         }
     }
 
+    containerRef.current.addEventListener("mousedown",handleClickOutside);
+
 
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
         document.removeEventListener("mousedown",handleClickOutside);
+        document.removeEventListener("mousedown",handleClickOutside);
     }
 
   },[]);
+
+  const handleSearchEnter = (e) => {
+
+    if(e.key === "Enter" && searchTerm.trim() !== "")
+    {
+    
+      navigate("/shop", {state: {filteredProducts}})
+      setOpen(false);
+    }
+  }
+
+  const searchClick = () => {
+    navigate("/shop", {state: {filteredProducts}})
+    setOpen(false);
+  }
 
   const handleNavigation = (product) => {
     navigate(`/shop/${product.id}`,{ state: {product}});
@@ -68,7 +91,7 @@ function SearchBar() {
               {loading ? (
                 <CircularProgress size={20} />
               ) : (
-                <Search className="search-icon" />
+                <Search className="search-icon"  onClick={searchClick}/>
               )}
             </InputAdornment>
           ),
@@ -76,13 +99,15 @@ function SearchBar() {
         sx={{
           width: "650px",
           "& .MuiOutlinedInput-root": {
-            borderRadius: open ? "1rem 1rem 0 0":"1rem",
+            borderRadius: open && searchTerm ? "1rem 1rem 0 0":"1rem",
+            backgroundColor: "white"
           },
         }}
         onChange={(e) => {
           setSearchTerm(e.target.value);
           setOpen(true);
         }}
+        onKeyDown={handleSearchEnter}
       />
 
       {/* Dropdown */}
@@ -104,7 +129,7 @@ function SearchBar() {
               </div>
             ))
           ) : (
-            <div>No results found.</div>
+            <div style={{padding: "0.7rem"}}>No results found.</div>
           )}
         </div>
       )}

@@ -10,7 +10,7 @@ body {
 .layout {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   background-color: rgb(255, 255, 255);
 }
 
@@ -37,7 +37,7 @@ body {
   background-color: rgb(0, 0, 0);
   max-height: 85vh;
   position: sticky;
-  top: 5rem;
+  top: 6rem;
   margin-left: 1rem;
   border-radius: 2rem;
 

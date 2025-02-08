@@ -5,7 +5,7 @@ function ProductDetails({ product, card, setCard }) {
   const [quantity, setQuantity] = useState(1);
 
 
-  console.log(product);
+
   const handleInputChange = (e) => {
     const newQuantity = Number(e.target.value);
     setQuantity(newQuantity);
