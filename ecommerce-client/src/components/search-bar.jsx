@@ -1,29 +1,107 @@
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-
-// import SearchIcon from "mui/icons-material/Search";
 import Search from "../assets/search.svg?react";
+import useData from "../hooks/useData.jsx";
+import { useState, useEffect, useRef } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import "../styles/search-bar.css";
 
 function SearchBar() {
+  const { data: products, loading, error } = useData("https://fakestoreapi.com/products");
+  
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (!loading && products) {
+      if (searchTerm.trim() !== "") {
+        const results = products.filter((product) =>
+          product.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredProducts(results);
+      } else {
+        setFilteredProducts([]);
+      }
+    }
+  }, [searchTerm, products, loading]);
+
+  useEffect(() => {
+
+    const handleClickOutside = (event) => {
+        if(containerRef.current && !containerRef.current.contains(event.target)){
+            setOpen(false)
+        }
+        if(containerRef.current && containerRef.current.contains(event.target)){
+            setOpen(true)
+        }
+    }
+
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+        document.removeEventListener("mousedown",handleClickOutside);
+    }
+
+  },[]);
+
   return (
     <>
+    <div className="search-bar" ref={containerRef}>
+
+    
       <TextField
         variant="outlined"
         placeholder="Search your drip!"
+        value={searchTerm}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <Search className="search-icon"/>
+              {loading ? (
+                <CircularProgress size={20} />
+              ) : (
+                <Search className="search-icon" />
+              )}
             </InputAdornment>
           ),
         }}
         sx={{
-          width: "40%",
+          width: "650px",
           "& .MuiOutlinedInput-root": {
-            borderRadius: "1rem",
+            borderRadius: open ? "1rem 1rem 0 0":"1rem",
           },
         }}
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+          setOpen(true);
+        }}
       />
+
+      {/* Dropdown */}
+      {open && searchTerm && (
+        <div className="search-dropdown">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <div
+                key={product.id}
+                className="search-item"
+                onClick={() => {
+                    setSearchTerm(product.title)
+                    setOpen(false)
+                    
+                }}
+              >
+                {product.title}
+              </div>
+            ))
+          ) : (
+            <div>No results found.</div>
+          )}
+        </div>
+      )}
+      </div>
     </>
   );
 }

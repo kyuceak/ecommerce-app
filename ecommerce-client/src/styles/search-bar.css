@@ -1,0 +1,26 @@
+.search-bar{
+    position: relative;
+  
+}
+
+
+.search-dropdown{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0 0 1rem 1rem;
+    z-index: 1001;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+
+.search-item{
+    padding: 0.5rem;
+    border: 1px solid #eee;
+    cursor: pointer;
+
+}

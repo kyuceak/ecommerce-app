@@ -6,6 +6,7 @@ import "../styles/item-carousel.css";
 import { useEffect, useState, useRef } from "react";
 import useData from "../hooks/useData";
 import StarRating from "./star-rating";
+import { useNavigate } from "react-router-dom";
 
 import nextSvg from "../assets/nextArrow.svg";
 import prevSvg from "../assets/prevArrow.svg";
@@ -25,6 +26,16 @@ function ItemCarousel({ card, setCard }) {
   const addToCard = (product) => {
     setCard((prev) => [...prev, product]);
   };
+
+  const navigate = useNavigate();
+
+
+  const navigateProdDetails = (product) => {
+ 
+      navigate(`/shop/${product.id}`,{state: {product}})
+
+    
+  }
 
   return (
     <div className="carousel-wrapper">
@@ -82,6 +93,7 @@ function ItemCarousel({ card, setCard }) {
                       src={product.image}
                       alt={product.title}
                       className="card-image"
+                      onClick={() => navigateProdDetails(product)}
                     />
                     <div className="card-content">
                       <h3 className="card-title">{product.title}</h3>

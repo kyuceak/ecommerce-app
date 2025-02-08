@@ -1,32 +1,47 @@
 import { useState } from "react";
 import "../styles/product-grid-view.css";
-
+import { useNavigate } from "react-router-dom";
 import StarRating from "./star-rating";
+import { useParams } from "react-router-dom";
 function ProductGridView({ products,card ,setCard, viewMode }) {
 
   const [addedProducts, setAddedProducts] = useState([]);
 
+  const navigate = useNavigate();
+  const {category} = useParams();
 
 
   const addToCard = (product) => {
     
     setCard((prev) => [...prev, product]);
+  }
 
-  
+  const navigateProdDetails = (product) => {
+    if(category){
+      navigate(`/category/${category}/${product.id}`, {state: {product}});
+    }else {
+      navigate(`/shop/${product.id}`, {state: {product}})
+    }
+    
   }
 
   return (
     <>
       <div className={`product-grid ${viewMode === "list" ? "list-view" : "grid-view"}`}>
         {products &&
-          products.map((product) => {
+          products.map((product,index) => {
 
             const isAdded = card.some((item) => item.id === product.id);
 
             return (
               <>
-                <div className="card">
-                  <img src={product.image} className="card-image" alt="" />
+                <div className="card" key={index}>
+                  <img 
+                  src={product.image} 
+                  className="card-image" 
+                  alt="" 
+                  onClick={() => navigateProdDetails(product)}
+                  />
 
                   <div className="card-content">
                    

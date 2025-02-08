@@ -24,6 +24,12 @@
   gap: 1rem;
 }
 
+.product-grid.list-view .card:hover {
+  transform: scale(1.02) ;
+ 
+}
+
+
 .product-grid.list-view .card .card-image {
   width: 50%;
 }
