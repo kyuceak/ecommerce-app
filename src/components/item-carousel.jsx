@@ -9,7 +9,7 @@ import StarRating from "./star-rating";
 import { useNavigate } from "react-router-dom";
 
 import nextSvg from "../assets/nextArrow.svg";
-import prevSvg from "../assets/prevArrow.svg";
+
 
 function ItemCarousel({ card, setCard }) {
   const {
@@ -17,6 +17,9 @@ function ItemCarousel({ card, setCard }) {
     loading,
     error,
   } = useData("https://fakestoreapi.com/products?limit=10");
+
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -27,19 +30,15 @@ function ItemCarousel({ card, setCard }) {
 
   const navigate = useNavigate();
 
+
   const navigateProdDetails = (product) => {
-    navigate(`/shop/${product.id}`, { state: { product } });
-  };
+ 
+      navigate(`/shop/${product.id}`,{state: {product}})
 
-  const [navReady, setNavReady] = useState(false);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+    
+  }
 
-  useEffect(() => {
-    if (prevRef.current && nextRef.current) {
-      setNavReady(true);
-    }
-  }, [prevRef, nextRef]);
+
 
   return (
     <div className="carousel-wrapper">
@@ -49,7 +48,7 @@ function ItemCarousel({ card, setCard }) {
         className="custom-nav custom-prev"
         style={{ display: isBeginning ? "none" : "block" }}
       >
-        <img src={prevSvg} alt="" draggable="false"></img>
+        <img src={nextSvg} alt="" draggable="false"></img>
       </div>
       <div
         ref={nextRef}
@@ -58,38 +57,39 @@ function ItemCarousel({ card, setCard }) {
       >
         <img src={nextSvg} alt="" draggable="false" />
       </div>
-      {navReady && (
-        <Swiper
-          modules={[Navigation]}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-          }}
-          onSlideChange={(swiper) => {
-            // Update state on each slide change.
-            setIsBeginning(swiper.isBeginning);
-            setIsEnd(swiper.isEnd);
-          }}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-            2048: { slidesPerView: 5 },
-          }}
-          observer={true}
-          observeParents={true}
-          spaceBetween={30}
-          className="carousel-container"
-        >
-          {products &&
-            products.map((product, index) => {
-              const isAdded = card.some((item) => item.id === product.id);
 
-              return (
+      <Swiper
+        modules={[Navigation]}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+        }}
+        onSlideChange={(swiper) => {
+       
+          setIsBeginning(swiper.isBeginning);
+          setIsEnd(swiper.isEnd);
+        }}
+        breakpoints={{
+          640: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+          2048: { slidesPerView: 5 },
+        }}
+        observer={true}
+        observeParents={true}
+        spaceBetween={30}
+        className="carousel-container"
+      >
+        {products &&
+          products.map((product, index) => {
+            const isAdded = card.some((item) => item.id === product.id);
+
+            return (
+           
                 <SwiperSlide key={index}>
                   <div className="card">
                     <img
@@ -120,10 +120,10 @@ function ItemCarousel({ card, setCard }) {
                     </div>
                   </div>
                 </SwiperSlide>
-              );
-            })}
-        </Swiper>
-      )}
+            
+            );
+          })}
+      </Swiper>
     </div>
   );
 }

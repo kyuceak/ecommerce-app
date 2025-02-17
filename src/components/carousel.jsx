@@ -45,22 +45,22 @@ function Carousel() {
           ))}
         </div>
 
-        <button className="carousel-btn" onClick={prevSlide}>
+        <button className="carousel-btn" style={{transform:"rotate(180deg)"}} onClick={prevSlide}>
           <svg
             viewBox="0 0 1024 1024"
-            class="icon"
+            className="icon"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             fill="#ffffff"
-            transform="rotate(180)"
+            
             width="35px"
             height="35px"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></g>
             <g id="SVGRepo_iconCarrier">
               <path
@@ -73,7 +73,7 @@ function Carousel() {
         <button className="carousel-btn next" onClick={nextSlide}>
           <svg
             viewBox="0 0 1024 1024"
-            class="icon"
+            className="icon"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             fill="#ffffff"
@@ -81,11 +81,11 @@ function Carousel() {
             width="35px"
             height="35px"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></g>
             <g id="SVGRepo_iconCarrier">
               <path
